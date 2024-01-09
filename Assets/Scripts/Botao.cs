@@ -27,5 +27,5 @@ public class Botao : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
         transform.localScale = tamanhoPadraoBotao;
     }
 
-    
+   
 }

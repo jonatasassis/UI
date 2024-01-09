@@ -17,7 +17,7 @@ public class Typer : MonoBehaviour
     }
 
     [Button]
-    void Escrever()
+   public  void Escrever()
     {
         StartCoroutine(DelayEscrever(frase));
     }

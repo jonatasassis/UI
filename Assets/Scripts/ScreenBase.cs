@@ -10,9 +10,10 @@ namespace Screens
     {
         public enum screenTipe
         {
-            tela1,
-            tela2,
-            tela3
+            MenuInicial,
+            Jogar,
+            Sobre,
+            Sair
         }
 
         public screenTipe screen;
@@ -20,23 +21,33 @@ namespace Screens
         public bool startDisabled;
 
         [Header("Animacao dos botoes")]
-        public float delayAnimacaoBotoes;
-        public float duracaoAnimacaoBotoes;
+        public static float delayAnimacaoBotoes=1;
+        public static float duracaoAnimacaoBotoes=0.2f;
+        public Typer frase;
+        
+     
 
         // Start is called before the first frame update
 
         private void Start()
         {
+            frase.Escrever();
             if (startDisabled)
             {
                 Esconder();
+                
             }
+
+            
         }
+
+      
 
         [Button]
         protected virtual void Mostrar()
         {
             MostrarObjetos();
+            
         }
 
         [Button]
@@ -48,17 +59,27 @@ namespace Screens
         private void EsconderObjetos()
         {
             objetosTela.ForEach(t => t.gameObject.SetActive(false));
+            
+            
         }
 
-        private void MostrarObjetos()
+       
+
+        public void MostrarObjetos()
         {
+            
             for (int i=0; i<objetosTela.Count;i++)
             {
                 var botao= objetosTela[i];
                 botao.gameObject.SetActive(true);
                 botao.DOScale(0, duracaoAnimacaoBotoes).From().SetDelay(i*delayAnimacaoBotoes) ;
+                
             }
+            
             //objetosTela.ForEach(t => t.gameObject.SetActive(true));
         }
+
+      
+
     }
 }
